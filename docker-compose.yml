@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:8080"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+  db:
+    image: "mysql"
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - db-data:/foo
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  db-data:
+  
+networks:
+  mynetwork:
+    driver: bridge
