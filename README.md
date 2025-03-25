@@ -41,7 +41,11 @@ This is a simple Node.js application that returns a "Hello Dockers" message. It 
    ```
    docker run -p 3000:3000 hello-docker-app
    ```
-3. **Access the application**: Open your browser and navigate to `http://localhost:3000` to see the message.
+3. **Or use Docker compose only to do everything**:
+   ```
+      docker-compose up
+   ```
+4. **Access the application**: Open your browser and navigate to `http://localhost:3000` to see the message.
 
 ## License
 This project is licensed under the MIT License.
